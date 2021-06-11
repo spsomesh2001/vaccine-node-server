@@ -25,7 +25,7 @@ mongoose.set("useFindAndModify", false);
 
 const app = express();
 
-const whitelist = ["http://localhost:3000", "http://localhost:8080", "https://vaccine-react-app.herokuapp.com/", "https://vaccine-node-server.herokuapp.com/"]
+const whitelist = ["http://localhost:3000", "http://localhost:8080", "https://vaccine-react-app.herokuapp.com", "https://vaccine-node-server.herokuapp.com"]
 const corsOptions = {
   origin: function (origin, callback) {
     console.log("** Origin of request " + origin)
