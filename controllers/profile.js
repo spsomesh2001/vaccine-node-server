@@ -124,15 +124,15 @@ exports.formFill = async (req, res) => {
 
 exports.locInfo = async (req, res) => {
   const { pincode, sdate } = req.body;
-  // console.log(typeof parseInt(pincode));
+  console.log(typeof parseInt(pincode));
   // console.log(sdate);
 
   var curDate = new Date(sdate);
   const c_date = (curDate.getDate()) + "-" + (curDate.getMonth() + 1) + "-" + curDate.getFullYear();
-  console.log("Date=> ", curDate.getDate());
-  console.log("Month=> ", curDate.getMonth() + 1);
-  console.log("Year=> ", curDate.getFullYear());
-  console.log();
+  // console.log("Date=> ", curDate.getDate());
+  // console.log("Month=> ", curDate.getMonth() + 1);
+  // console.log("Year=> ", curDate.getFullYear());
+  // console.log();
   console.log(c_date);
 
   var pin_patt = /(^\d{6}$)/;
@@ -171,7 +171,7 @@ exports.locInfo = async (req, res) => {
     });
 
     // console.log(data.sessions);
-    // console.log(final_data);
+    console.log(final_data);
 
     res.status(200).json({
       message: "Location Route Working",
