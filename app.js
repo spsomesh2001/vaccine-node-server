@@ -25,8 +25,23 @@ mongoose.set("useFindAndModify", false);
 
 const app = express();
 
+const whitelist = ["http://localhost:3000", "http://localhost:8080", "https://vaccine-react-app.herokuapp.com/"]
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log("** Origin of request " + origin)
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable")
+      callback(null, true)
+    } else {
+      console.log("Origin rejected")
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
 app.use(morgan("dev"));
-app.use(cors());
+app.use(cors(corsOptions))
+// app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
